@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contendio">
+            <h2>Datos de Clientes</h2>
+            </br>
+            <a th:href="@{/cliente/listado}">Regresar</a>
+            </br>
+            </br>
+
+            <form th:action="@{/cliente/guardar}"
+                  method="POST"
+                  th:object="${cliente}">
+                
+                <input type="hidden" name="idCliente" th:field="*{idCliente}" />
+                
+                <label for="nombre">Nombre</label><br/>
+                <input type="text" name="nombre" th:field="*{nombre}" /><br/>
+
+                <label for="apellidos">Apellido</label><br/>
+                <input type="text" name="apellidos" th:field="*{apellidos}" /><br/>
+
+                <label for="correo">Correo</label><br/>
+                <input type="email" name="correo" th:field="*{correo}" /><br/>
+
+                <label for="telefono">Telefono</label><br/>
+                <input type="tel" name="telefono" th:field="*{telefono}" /><br/>
+                </br>
+                
+                <label for="limite">Limite de credito</label><br/>
+                <input type="number" name="limite" th:field="*{credito.limite}" /><br/>
+                </br>
+
+
+                <input type="submit" name="Guardar" value="Guardar" />
+
+
+            </form>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <link href="/CSS/menu.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Nuestros Articulos</h2> 
+        <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
+        <div th:if="${articulos != null and !articulos.empty}">  
+            <table border="1">
+                <thead>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Existencias</th>
+                <th>Activa</th>
+                </thead>
+                <tbody >
+                    <tr th:each="articulo : ${articulos}">
+                        <td th:text="${articulo.descripcion}"></td>
+                        <td th:text="${#numbers.formatDecimal (articulo.precio, 3, 2} |" style="text-align: right"></td>
+                        <td th:text="${articulo.existencias}" style="text-align: center"></td>
+                        <td><input type="checkbox" name= "activa" "$(articulo.activo}" disabled="true"></td>
+
+                        <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar<a/></td>
+                        <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar<a/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${articulos == null or articulos.empty}"> 
+            No tenemos articulos que mostrar...  
+        </div> 
+        <footer th:replace="layout/plantilla :: footer" />
+    <body>
+    </body>
+</html>

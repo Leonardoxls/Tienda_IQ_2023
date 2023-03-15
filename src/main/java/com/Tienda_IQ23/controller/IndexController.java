@@ -24,38 +24,12 @@ public class IndexController {
     @GetMapping("/")
     public String inicio(Model model) {
         log.info("Ahora utilizando MVC");
-
-        
         var clientes=clienteService.getClientes();
-//        var clientes = Arrays.asList();
         model.addAttribute("clientes", clientes);
+        
         return "index";
     }
     
-    @GetMapping("/nuevoCliente") 
-    public String nuevoCliente (Cliente cliente){
-    
-        return "modificarCliente";
-    }
-    
-    @PostMapping("/guardarCliente")
-    public String guardarCliente(Cliente cliente){
-        clienteService.save(cliente);
-        return "redirect:/";
-    }
-    
-        @GetMapping("/modificarCliente/{idCliente}")
-    public String modificarCliente(Cliente cliente, Model model) {
-        clienteService.getCliente(cliente);
-        model.addAttribute("Cliente", cliente);
-        return "modificarCliente";
-    }
- 
-    @GetMapping("/eliminarCliente/{idCliente}")
-    public String eliminarCliente(Cliente cliente) {
-        clienteService.delete(cliente);
-        return "redirect:/";
-    }
 }
 
 
