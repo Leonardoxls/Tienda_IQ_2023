@@ -4,13 +4,12 @@ import com.Tienda_IQ23.dominio.Articulo;
 import java.util.List;
 
 public interface ArticuloService {
-
-    public List<Articulo> getArticulos(boolean articulo);
-
-    public List<Articulo> getArticulo(Articulo articulo);
-
-    public void save(Articulo articulo);// tanto para insertar como para modificar un registro
-
+    
+    public List<Articulo> getArticulos(boolean activos);
+    
+    public Articulo getArticulo(Articulo articulo);
+    
+    public void save(Articulo articulo); //Sirve para insertar y modificar un registro
+    
     public void delete(Articulo articulo);
-
 }

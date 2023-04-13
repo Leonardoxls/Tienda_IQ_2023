@@ -1,4 +1,3 @@
-
 package com.Tienda_IQ23.service;
 
 import com.Tienda_IQ23.dao.ArticuloDao;
@@ -10,25 +9,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ArticuloServiceImpl implements ArticuloService {
-
     @Autowired
     ArticuloDao articuloDao;
 
     @Override
-    @Transactional(readOnly = true) // para manejar transacciones de solo lectura
+    @Transactional(readOnly = true) //para manejar transacciones de solo lectura
     public List<Articulo> getArticulos(boolean activos) {
         var lista = (List<Articulo>) articuloDao.findAll();
-        
-        if(activos){
+        if (activos) { //activos = true, es lo mismo
             lista.removeIf(e -> !e.isActivo());
+            //remover elemantos donde el elemento donde activo es falso
         }
         return lista;
     }
 
     @Override
-    @Transactional(readOnly = true) // para manejar transacciones de solo lectura
-    public List<Articulo> getArticulo(Articulo articulo) {
-        return (List<Articulo>) articuloDao.findById(articulo.getIdArticulo()).orElse(null);
+    @Transactional(readOnly = true) //para manejar transacciones de solo lectura
+    public Articulo getArticulo(Articulo articulo) {
+        return articuloDao.findById(articulo.getIdArticulo()).orElse(null);
     }
 
     @Override
@@ -44,4 +42,3 @@ public class ArticuloServiceImpl implements ArticuloService {
     }
 
 }
-

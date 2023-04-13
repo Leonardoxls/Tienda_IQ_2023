@@ -1,15 +1,14 @@
-
 package com.Tienda_IQ23.dominio;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.io.Serializable;
-import lombok.Data;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
 
 @Data
 @Entity
@@ -20,7 +19,7 @@ public class Credito implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_credito") // permite indicar con cual campo de la base de datos se va a mapear
+    @Column (name="id_credito")
     private Long idCredito;
     private double limite;
 
@@ -31,5 +30,5 @@ public class Credito implements Serializable {
         this.limite = limite;
     }
     
-    
+ 
 }
