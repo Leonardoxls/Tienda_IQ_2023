@@ -1,5 +1,6 @@
 package com.Tienda_IQ23.service;
 
+
 import com.Tienda_IQ23.dao.ClienteDao;
 import com.Tienda_IQ23.dao.CreditoDao;
 import com.Tienda_IQ23.dominio.Cliente;
@@ -9,34 +10,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service //Esto ayuda a reconoce los metodos, va pegada a public class
+@Service 
 public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     ClienteDao clienteDao;
     
     @Autowired
-    CreditoDao creditoDao; //Lamar la clase Credito
+    CreditoDao creditoDao; 
 
     @Override
-    @Transactional(readOnly = true) //para manejar transacciones de solo lectura
+    @Transactional(readOnly = true) 
     public List<Cliente> getClientes() {
         return (List<Cliente>) clienteDao.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true) //para manejar transacciones de solo lectura
+    @Transactional(readOnly = true) 
     public Cliente getCliente(Cliente cliente) {
         return clienteDao.findById(cliente.getIdCliente()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(Cliente cliente) {//Funciona para agregar o modificar credito 
-        Credito credito = cliente.getCredito();//Obtener atributo del credito del cliente
-        credito = creditoDao.save(credito);//Actualiza el credito
-        cliente.setCredito(credito);//Setearlo al c
-        clienteDao.save(cliente);//Actualiza el dato del credito cliente
+    public void save(Cliente cliente) {
+        Credito credito = cliente.getCredito();
+        credito = creditoDao.save(credito);
+        cliente.setCredito(credito);
+        clienteDao.save(cliente);
     }
 
     @Override

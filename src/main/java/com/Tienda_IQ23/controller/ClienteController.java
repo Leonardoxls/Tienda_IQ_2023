@@ -1,5 +1,6 @@
 package com.Tienda_IQ23.controller;
 
+
 import com.Tienda_IQ23.dominio.Cliente;
 import com.Tienda_IQ23.service.ClienteService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class ClienteController {
         
         var limiteTotal=0;
         for (var c: clientes) {
-            limiteTotal+=c.getCredito().getLimite();
+            //limiteTotal+=c.getCredito().getLimite();
         }
         model.addAttribute("limiteTotal", limiteTotal);
         model.addAttribute("totalClientes", clientes.size());

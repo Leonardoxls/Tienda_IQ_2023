@@ -1,5 +1,6 @@
 package com.Tienda_IQ23.service;
 
+
 import com.Tienda_IQ23.dao.CategoriaDao;
 import com.Tienda_IQ23.dominio.Categoria;
 import java.util.List;
@@ -7,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service 
+@Service
 public class CategoriaServiceImpl implements CategoriaService {
     @Autowired
     private CategoriaDao categoriaDao;
@@ -18,13 +19,13 @@ public class CategoriaServiceImpl implements CategoriaService {
         var lista = (List<Categoria>)categoriaDao.findAll();
         if(activos){ 
             lista.removeIf(e -> !e.isActivo()); 
-           
+            
         }
         return lista;
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) //para manejar transacciones de solo lectura
     public Categoria getCategoria(Categoria categoria) {
         return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
     }

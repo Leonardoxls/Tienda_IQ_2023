@@ -1,5 +1,6 @@
 package com.Tienda_IQ23.service;
 
+
 import com.Tienda_IQ23.dao.ArticuloDao;
 import com.Tienda_IQ23.dominio.Articulo;
 import java.util.List;

@@ -46,7 +46,7 @@ public class ArticuloController {
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
         
-        articulo = articuloService.getArticulo(articulo);
+        articulo = (Articulo) articuloService.getArticulo(articulo);
         model.addAttribute("articulo", articulo);
         return "/articulo/modificar";
 

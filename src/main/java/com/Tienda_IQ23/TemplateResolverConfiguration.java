@@ -2,9 +2,9 @@ package com.Tienda_IQ23;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
+import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 public class TemplateResolverConfiguration {
@@ -53,6 +53,18 @@ public class TemplateResolverConfiguration {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setOrder(3);
+        templateResolver.setCheckExistence(true);
+        return templateResolver;
+    }
+    
+    @Bean
+    public SpringResourceTemplateResolver TemplateResolver_4() {
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("templates/carrito/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(4);
         templateResolver.setCheckExistence(true);
         return templateResolver;
     }

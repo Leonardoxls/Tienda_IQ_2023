@@ -1,13 +1,7 @@
 package com.Tienda_IQ23.dominio;
 
-
+import jakarta.persistence.*;
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Data;
 
 @Data
@@ -22,10 +16,13 @@ public class Credito implements Serializable {
     @Column (name="id_credito")
     private Long idCredito;
     private double limite;
+    //esto hace que se pueda llamar la columna de la
+    //DB y ponerle otro nombre en el proyecto Java si se deseara
 
     public Credito() {
     }
 
+    //No se hace un constructor paraidCredito porque es autoincremental
     public Credito(double limite) {
         this.limite = limite;
     }

@@ -9,7 +9,7 @@ public interface ClienteService {
     
     public Cliente getCliente(Cliente cliente);
     
-    public void save(Cliente cliente); //Sirve para insertar y modificar un registro
+    public void save(Cliente cliente); 
     
     public void delete(Cliente cliente);
     
